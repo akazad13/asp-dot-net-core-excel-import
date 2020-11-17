@@ -10,9 +10,11 @@ namespace AttendenceImport.Migrations
                 name: "ExcelData",
                 columns: table => new
                 {
-                    StudentID = table.Column<int>(type: "int", nullable: false),
-                    ProgrammeID = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StudentName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentID = table.Column<int>(type: "int", nullable: false),
+                    Programme = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClassCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     StudentStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     AttendanceStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -131,7 +133,7 @@ namespace AttendenceImport.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExcelData", x => new { x.StudentID, x.ProgrammeID });
+                    table.PrimaryKey("PK_ExcelData", x => x.ID);
                 });
         }
 

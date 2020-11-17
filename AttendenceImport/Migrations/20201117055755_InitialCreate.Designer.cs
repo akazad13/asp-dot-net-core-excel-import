@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttendenceImport.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201116175043_InitialCreate")]
+    [Migration("20201117055755_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,11 +22,10 @@ namespace AttendenceImport.Migrations
 
             modelBuilder.Entity("AttendenceImport.Models.ExcelData", b =>
                 {
-                    b.Property<int>("StudentID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProgrammeID")
-                        .HasColumnType("int");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Attendance1")
                         .HasMaxLength(50)
@@ -427,6 +426,12 @@ namespace AttendenceImport.Migrations
                     b.Property<string>("L9")
                         .HasColumnType("nvarchar(1)");
 
+                    b.Property<string>("Programme")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("int");
+
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");
 
@@ -434,7 +439,7 @@ namespace AttendenceImport.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("StudentID", "ProgrammeID");
+                    b.HasKey("ID");
 
                     b.ToTable("ExcelData");
                 });

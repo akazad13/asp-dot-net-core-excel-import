@@ -9,9 +9,12 @@ namespace AttendenceImport.Models
 {
     public class ExcelData
     {
+        public int ID { get; set; }
+        [MaxLength(50)]
         public string StudentName { get; set; }
         public int StudentID { get; set; }
-        public int ProgrammeID { get; set; }
+        [MaxLength(50)]
+        public string Programme { get; set; }
         [MaxLength(50)]
         public string ClassCode { get; set; }
         [MaxLength(50)]

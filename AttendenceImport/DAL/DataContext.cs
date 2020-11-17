@@ -13,11 +13,6 @@ namespace AttendenceImport.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ExcelData>().HasKey(ed => new
-            {
-                ed.StudentID,
-                ed.ProgrammeID
-            });
         }
     }
 }
